@@ -101,7 +101,7 @@ def stream_events(kubernetes, k8s_namespace_name, timeout):
     v1 = kubernetes.client.CoreV1Api()
     k8s_watch = kubernetes.watch.Watch()
     if k8s_namespace_name:
-        return k8s_watch.stream(v1.v1.list_namespaced_event, k8s_namespace_name, timeout_seconds=timeout)
+        return k8s_watch.stream(v1.list_namespaced_event, k8s_namespace_name, timeout_seconds=timeout)
     else:
         return k8s_watch.stream(v1.list_event_for_all_namespaces, timeout_seconds=timeout)
 
